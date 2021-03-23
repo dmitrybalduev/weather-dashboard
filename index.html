@@ -11,14 +11,14 @@
     <div class="jumbotron">
         <h1 class="display-4">Weather Dashboard</h1>        
     </div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-3">
+            <div class="col-2">
                 <h2>Search for a City</h2>
                 <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
                 <button type="click" class="btn btn-info btn-block">Search</button>
             </div>
-            <div class="col-9" >
+            <div class="col-10" >
                 <div class="d-block p-2" id="current-weather-block" >
                     <h3 id="city"></h3>
                     <div id="temperature"></div>
@@ -27,8 +27,58 @@
                     <div id="uv-index" style="display: none;">UV-Index: </div>
                     <div class="d-inline" id="uv-index-text"></div>
                 </div>
-                <div class="d-block p-2 ">d-block
-                    
+                <div class="d-block p-2 ">
+                    <div id="hidden-forecast-area" >
+                        <h2>5-Day Forecast</h2>
+                        <div class="card-group">
+                            <div class="card" data-index="day1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <div class="weather-icon"></div>
+                                    <p class="card-text weather-temp-forecast">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text weather-humid-forecast"></p>
+                                </div>
+                            </div>
+                            <div class="card" data-index="day1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <div class="weather-icon"></div>
+                                    <p class="card-text weather-temp-forecast">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text weather-humid-forecast"></p></div>
+                                </div>
+                            <div class="card" data-index="day2">
+                                <div class="card-body" >
+                                    <h5 class="card-title">Card title</h5>
+                                    <div class="weather-icon"></div>
+                                    <p class="card-text weather-temp-forecast">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text weather-humid-forecast"></p></div>
+                                </div>
+                            <div class="card" data-index="day3">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <div class="weather-icon"></div>
+                                    <p class="card-text weather-temp-forecast">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text weather-humid-forecast"></p>
+                                </div>
+                            </div>
+                            <div class="card" data-index="day4">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <div class="weather-icon"></div>
+                                    <p class="card-text weather-temp-forecast">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text weather-humid-forecast"></p>
+                                </div>
+                            </div>
+                            <div class="card" data-index="day5">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <div class="weather-icon"></div>
+                                    <p class="card-text weather-temp-forecast">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text weather-humid-forecast"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div> 
             </div>
         </div>

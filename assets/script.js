@@ -64,6 +64,9 @@ function displayUV(info){
             return response.json();
         })
         .then(function(data){
-            console.log(data);
+            for(let i = 0; i < 5; i++){
+                console.log(data.list[i*8]);
+                
+            }
         })
   }
