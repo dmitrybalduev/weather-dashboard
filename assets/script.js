@@ -65,8 +65,8 @@ function displayUV(info){
         })
         .then(function(data){
             for(let i = 0; i < 5; i++){
-                console.log(data.list[i*8]);
-                
+                let tempDate =  $("h5[data-index='weather-date-"+(i+1)+"']");
+                tempDate.text(data.list[i*8].dt_txt.split(' ')[0]);
             }
         })
   }
