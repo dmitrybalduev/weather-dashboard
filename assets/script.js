@@ -44,8 +44,15 @@ function displayUV(info){
             return response.json();
         })
         .then(function(data){
-            console.log(data.value);
-            $("#uv-index").text("UV-Index: " + data.value);
+            uv = data.value;  
+            if(uv <= 2.5){
+                $("#uv-index").text("UV-Index: " + uv).css("background-color", "green");
+            }else if(uv > 2.5 && uv <= 5.5){
+                $("#uv-index").text("UV-Index: " + uv).css("background-color", "yellow");
+            }else{
+                $("#uv-index").text("UV-Index: " + uv).css("background-color", "red");
+            }
         })
+    
 }
   $("button").on('click', getCurrentWeather);
