@@ -59,14 +59,21 @@ function displayUV(info){
 
   function getForecastData(info){
     let url = "http://api.openweathermap.org/data/2.5/forecast?"
-    fetch(url + "q=" + city + "&appid=" + apikey)
+    fetch(url + "q=" + city + "&appid=" + apikey + "&units=imperial")
         .then(function (response){
             return response.json();
         })
         .then(function(data){
+            console.log(data.list[0]);
             for(let i = 0; i < 5; i++){
                 let tempDate =  $("h5[data-index='weather-date-"+(i+1)+"']");
                 tempDate.text(data.list[i*8].dt_txt.split(' ')[0]);
+                let tempIcon = $("img[data-index='weather-icon-"+(i+1)+"']");
+                tempIcon.attr('src', "http://openweathermap.org/img/w/"+data.list[i*8].weather[0].icon+".png");
+                let tempTemp = $("p[data-index='weather-temp-"+(i+1)+"']");
+                tempTemp.text("Temp: " + data.list[i*8].main.temp + "F");
+                let tempHumid = $("p[data-index='weather-humid-"+(i+1)+"']");
+                tempHumid.text("Humidity: " + data.list[i*8].main.humidity + "%");
             }
         })
   }
