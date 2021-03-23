@@ -22,8 +22,6 @@ function getCurrentWeather() {
         displayCurrentWeather(data);
         displayUV(data);
       });
-
-     
   }
 
 function displayCurrentWeather(info){
@@ -43,7 +41,7 @@ function displayUV(info){
     let uv;
     fetch(url + "?lat=" + lat + "&lon=" + lon + "&appid=" + apikey)
         .then(function (response){
-            return response.json;
+            return response.json();
         })
         .then(function(data){
             console.log(data.value);
