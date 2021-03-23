@@ -18,14 +18,17 @@
                 <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
                 <button type="click" class="btn btn-info btn-block">Search</button>
             </div>
-            <div class="col-9">
-                <div class="d-block p-2 "></div>
+            <div class="col-9" >
+                <div class="d-block p-2" id="current-weather-block" >
                     <h3 id="city"></h3>
                     <div id="temperature"></div>
                     <div id="humidity"></div>
                     <div id="wind-speed"></div>
-                    <div id="uv-index"></div>
-                <div class="d-block p-2 ">d-block</div> 
+                    <!-- <div id="uv-index"></div> -->
+                    <div id="uv-index" style="display: none;">UV-Index: </div>
+                    <div class="d-inline" id="uv-index-text"></div>
+                </div>
+                    <div class="d-block p-2 ">d-block</div> 
             </div>
         </div>
     </div>

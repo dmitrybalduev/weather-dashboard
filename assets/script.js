@@ -25,14 +25,12 @@ function getCurrentWeather() {
   }
 
 function displayCurrentWeather(info){
-    // let uvindex = getUV(info);
     $("#city").text("City: " + info.name);
     let tempKelvin = info.main.temp;
     let tempF = Math.round((tempKelvin - 273.15)*9/5 + 32);
     $("#temperature").text("Temperature: " + tempF + "F");
     $("#humidity").text("Humidity: " + info.main.humidity + "%");
-    $("#wind-speed").text("Wind: " + info.wind.speed);
-    // $("#uv-index").text("UV-Index: " + uvindex);
+    $("#wind-speed").text("Wind: " + info.wind.speed );
 }
 function displayUV(info){
     let url="http://api.openweathermap.org/data/2.5/uvi";
@@ -44,13 +42,14 @@ function displayUV(info){
             return response.json();
         })
         .then(function(data){
-            uv = data.value;  
+            uv = data.value;
+            $("#uv-index").addClass("d-inline");
             if(uv <= 2.5){
-                $("#uv-index").text("UV-Index: " + uv).css("background-color", "green");
+                $("#uv-index-text").text(uv).css("background-color", "green");
             }else if(uv > 2.5 && uv <= 5.5){
-                $("#uv-index").text("UV-Index: " + uv).css("background-color", "yellow");
+                $("#uv-index-text").text(uv).css("background-color", "yellow");
             }else{
-                $("#uv-index").text("UV-Index: " + uv).css("background-color", "red");
+                $("#uv-index-text").text(uv).css("background-color", "red");
             }
         })
     
