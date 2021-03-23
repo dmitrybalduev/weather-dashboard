@@ -1,11 +1,11 @@
 let input = $("#search-input")[0];
 const apikey = "5b88f5dd40c49d3c791f09158ad429c0";
+let city = "";
 
 
 function getCurrentWeather() {
-    // Insert the API url to get a list of your repos
     var requestUrl = 'http://api.openweathermap.org/data/2.5/weather';
-    let city = input.value;
+    city = input.value;
     if (city == "") {
         alert('You need input value for search!');
         return;
@@ -22,6 +22,7 @@ function getCurrentWeather() {
         displayCurrentWeather(data);
         displayUV(data);
       });
+      getForecastData();
   }
 
 function displayCurrentWeather(info){
@@ -55,3 +56,14 @@ function displayUV(info){
     
 }
   $("button").on('click', getCurrentWeather);
+
+  function getForecastData(info){
+    let url = "http://api.openweathermap.org/data/2.5/forecast?"
+    fetch(url + "q=" + city + "&appid=" + apikey)
+        .then(function (response){
+            return response.json();
+        })
+        .then(function(data){
+            console.log(data);
+        })
+  }
