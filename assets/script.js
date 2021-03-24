@@ -1,7 +1,7 @@
 let input = $("#search-input")[0];
 const apikey = "5b88f5dd40c49d3c791f09158ad429c0";
 let city = "";
-
+let recentCities = JSON.parse(localStorage.getItem("cities"));
 
 function getCurrentWeather() {
     var requestUrl = 'http://api.openweathermap.org/data/2.5/weather';
@@ -21,6 +21,7 @@ function getCurrentWeather() {
       .then(function (data) {
         displayCurrentWeather(data);
         displayUV(data);
+        storeCities();
       });
       getForecastData();
   }
@@ -56,6 +57,7 @@ function displayUV(info){
     
 }
   $("button").on('click', getCurrentWeather);
+  displayCities();
 
   function getForecastData(info){
     let url = "http://api.openweathermap.org/data/2.5/forecast?"
@@ -76,4 +78,30 @@ function displayUV(info){
                 tempHumid.text("Humidity: " + data.list[i*8].main.humidity + "%");
             }
         })
+        $("#hidden-forecast-area").show();
   }
+
+function storeCities(){
+    if(recentCities == null){
+        recentCities = [];
+    }
+    for(let i = 0; i < recentCities.length; i++){
+        if(city.toLowerCase() == recentCities[i].toLowerCase()){
+            return;
+        }
+    }
+    recentCities.push(city);
+    localStorage.setItem("cities", JSON.stringify(recentCities));
+}
+
+function displayCities(){
+    if(recentCities == null){
+        return;
+    }
+    for(let i = 0; i < recentCities.length; i++){
+        let listItem = $("<li></li>").text(recentCities[i].charAt(0).toUpperCase() + recentCities[i].slice(1));
+        listItem.addClass("list-group-item");
+        listItem.attr("data-value",recentCities[i]);
+        listItem.appendTo($("#recent-cities-list"))
+    }
+}

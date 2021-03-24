@@ -13,12 +13,19 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2">
-                <h2>Search for a City</h2>
-                <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
-                <button type="click" class="btn btn-info btn-block">Search</button>
+            <div class="col-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h2>Search for a City</h2>
+                        <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
+                        <button type="click" class="btn btn-info btn-block">Search</button>
+                    </div>
+                    <ul class="list-group " id="recent-cities-list"></ul>
+                  </div>
+               
+                  
             </div>
-            <div class="col-10" >
+            <div class="col-9" >
                 <div class="d-block p-2" id="current-weather-block" >
                     <h3 id="city"></h3>
                     <div id="temperature"></div>
@@ -28,7 +35,7 @@
                     <div class="d-inline" id="uv-index-text"></div>
                 </div>
                 <div class="d-block p-2 ">
-                    <div id="hidden-forecast-area" >
+                    <div id="hidden-forecast-area" style="display: none;">
                         <h2>5-Day Forecast</h2>
                         <div class="card-group">
                             <div class="card" data-index="day1">
