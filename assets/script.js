@@ -7,7 +7,7 @@ let isSuccess = false;
 
 //function to display current weather
 function getCurrentWeather() {
-    var requestUrl = 'http://api.openweathermap.org/data/2.5/weather';
+    var requestUrl = 'https://api.openweathermap.org/data/2.5/weather';
     //check user clicked on city from the list 
     if(!cityRecent == ""){
         city = cityRecent;
@@ -61,7 +61,7 @@ function displayCurrentWeather(info){
 //method to display UV index - need to make additional request to get UV index.
 //it takes one parameter - json object that comes from first request - needed to get lon and lat values for given city
 function displayUV(info){
-    let url="http://api.openweathermap.org/data/2.5/uvi";
+    let url="https://api.openweathermap.org/data/2.5/uvi";
     //retrieving lat and lon values from json object
     let lat = info.coord.lat;
     let lon = info.coord.lon;
@@ -91,7 +91,7 @@ function displayUV(info){
 
   //method to get forecast data
   function getForecastData(info){
-    let url = "http://api.openweathermap.org/data/2.5/forecast?"
+    let url = "https://api.openweathermap.org/data/2.5/forecast?"
     fetch(url + "q=" + city + "&appid=" + apikey + "&units=imperial")
         .then(function (response){
             return response.json();
