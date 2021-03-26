@@ -40,11 +40,12 @@ function getCurrentWeather() {
         displayUV(data);
         //calling method to store cities list to the local storage
         storeCities();
+         //check if request was successful, call method to get forecast
+        if(isSuccess){
+            getForecastData();
+        }
       });
-      //check if request was successful, call method to get forecast
-      if(isSuccess){
-          getForecastData();
-      }
+     
   }
 
   //method to display information on current weather taking one parameter as a json object from response
