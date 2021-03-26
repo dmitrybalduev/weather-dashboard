@@ -2,10 +2,16 @@ let input = $("#search-input")[0];
 const apikey = "5b88f5dd40c49d3c791f09158ad429c0";
 let city = "";
 let recentCities = JSON.parse(localStorage.getItem("cities"));
+let cityRecent = "";
 
 function getCurrentWeather() {
     var requestUrl = 'http://api.openweathermap.org/data/2.5/weather';
-    city = input.value;
+    if(!cityRecent == ""){
+        city = cityRecent;
+    }else{
+        city = input.value;
+    }
+    
     if (city == "") {
         alert('You need input value for search!');
         return;
@@ -101,7 +107,20 @@ function displayCities(){
     for(let i = 0; i < recentCities.length; i++){
         let listItem = $("<li></li>").text(recentCities[i].charAt(0).toUpperCase() + recentCities[i].slice(1));
         listItem.addClass("list-group-item");
-        listItem.attr("data-value",recentCities[i]);
+        listItem.attr("data-value",recentCities[i].charAt(0).toUpperCase() + recentCities[i].slice(1));
+        listItem.attr("onlick", "clickOnList()")
         listItem.appendTo($("#recent-cities-list"))
     }
 }
+
+$(function() {
+    $('li').click( function() {
+        cityRecent = $(this).attr('data-value');
+        getCurrentWeather();
+        console.log($(this).attr('data-value'));
+    });
+});
+
+$("li").hover(function(){
+    $(this).css("cursor", "pointer");
+});
