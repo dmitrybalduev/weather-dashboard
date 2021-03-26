@@ -3,6 +3,7 @@ const apikey = "5b88f5dd40c49d3c791f09158ad429c0";
 let city = "";
 let recentCities = JSON.parse(localStorage.getItem("cities"));
 let cityRecent = "";
+let isSuccess = false;
 
 function getCurrentWeather() {
     var requestUrl = 'http://api.openweathermap.org/data/2.5/weather';
@@ -19,8 +20,11 @@ function getCurrentWeather() {
     fetch(requestUrl + "?q="+city+"&appid="+apikey)
       .then(function (response) {
           if(response.status != 200){
-              alert("Search failed\n" + response.text);
+              alert("Search failed. Make sure you enter valid city");
+              isSuccess =false;
               return;
+          }else{
+              isSuccess = true;
           }
         return response.json();
       })
@@ -29,7 +33,9 @@ function getCurrentWeather() {
         displayUV(data);
         storeCities();
       });
-      getForecastData();
+      if(isSuccess){
+          getForecastData();
+      }
   }
 
 function displayCurrentWeather(info){
@@ -95,6 +101,9 @@ function storeCities(){
         if(city.toLowerCase() == recentCities[i].toLowerCase()){
             return;
         }
+    }
+    if(recentCities.length === 5){
+        recentCities.shift();
     }
     recentCities.push(city);
     localStorage.setItem("cities", JSON.stringify(recentCities));
